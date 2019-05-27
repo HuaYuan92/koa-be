@@ -4,7 +4,7 @@
     <option name="serverConfigurations">
       <list>
         <ServerConfiguration>
-          <option name="label" value="mongo/dbs" />
+          <option name="label" value="mongo" />
           <option name="serverUrls">
             <list>
               <option value="localhost:27017" />
@@ -16,5 +16,6 @@
         </ServerConfiguration>
       </list>
     </option>
+    <option name="shellPath" value="/usr/local/bin/mongo" />
   </component>
 </project>

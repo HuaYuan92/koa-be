@@ -1,3 +1,3 @@
 module.exports =  {
-  dbs: 'mongodb://127.0.0.1:27017/dbs'
+  dbs: "mongodb+srv://xy:123mongodb456-@cluster0-yymsu.azure.mongodb.net/test?retryWrites=true"
 }

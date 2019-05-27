@@ -23,6 +23,7 @@ router.get('/', async (ctx, next) => {
  证明添加数据成功。
 
  注意： save()方法是model自带的写入数据的方法, 通过实例 person 写入
+ 使用save()方法，需要先实例化为文档，再使用save()方法保存文档。而create()方法，则直接在模型Model上操作，并且可以同时新增多个文档
  */
 
 router.post('/addPerson', async function (ctx) {
@@ -31,13 +32,21 @@ router.post('/addPerson', async function (ctx) {
     name: ctx.request.body.name,
     age: ctx.request.body.age
   })
-
+  // let doc = await Person.create({
+  //   username: 'cedric222',
+  //   password: '123',
+  //   age: 27
+  // }, {
+  //   username: 'cedric333',
+  //   password: '123',
+  //   age: 27
+  // })
   let code = 0 // 状态码
 
   try {
     await person.save()
     code = 0
-  } catch(e) {
+  } catch (e) {
     code = -1
   }
 
@@ -73,14 +82,10 @@ router.post('/addPerson', async function (ctx) {
  *          find() 可以找到整个符合条件的集合(数组)
  */
 
-router.post('/getPerson', async function (ctx) {
-  const result = await Person.findOne({
-    name: ctx.request.body.name
-  })
-
-  const results = await Person.find({
-    name: ctx.request.body.name
-  })
+router.get('/getPerson', async function (ctx) {
+  const name = ctx.query.name||'';
+  const result = await Person.findOne({name})
+  const results = await Person.find()
 
   // 这里没有考虑异常，直接返回了结果
   ctx.body = {
@@ -124,15 +129,14 @@ router.post('/updatePerson', async function (ctx) {
  *          remove() 删除该内容
  */
 
-router.post('/removePerson', async function (ctx) {
+router.delete('/removePerson', async function (ctx) {
   // 找到符合条件的name,并修改其age
-  const result = await Person.where({
-    name: ctx.request.body.name
-  }).remove()
+  const result = await Person.findByIdAndRemove(ctx.query._id);
 
   // 这里没有考虑异常，直接返回了结果
   ctx.body = {
-    code: 0
+    code: 0,
+    result
   }
 })
 
