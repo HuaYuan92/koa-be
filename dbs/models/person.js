@@ -5,4 +5,7 @@ let personSchema = new mongoose.Schema({
   age: Number
 });
 
-module.exports = mongoose.model('Person', personSchema)
+// module.exports = mongoose.model('Person', personSchema)
+module.exports = function () {
+  console.log(dd);
+}
