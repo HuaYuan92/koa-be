@@ -7,10 +7,10 @@ const mongoose = require('mongoose');
 const onerror = require('koa-onerror')
 const dbConfig = require('./dbs/config');
 const cors = require('koa2-cors')
-
-mongoose.connect(dbConfig.dbs, {
-  useNewUrlParser: true
-});
+//
+// mongoose.connect(dbConfig.dbs, {
+//   useNewUrlParser: true
+// });
 onerror(app);
 app.use(cors({
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization', 'Date'],
