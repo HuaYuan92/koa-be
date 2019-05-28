@@ -31,7 +31,7 @@ app.use(logger())
 
 app.use(router.routes());
 
-const port = 3001;
+const port = 3000;
 
 app.listen(port,()=>{
   console.log(`app started at port ${port}`);
