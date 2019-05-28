@@ -1,6 +1,10 @@
 const router = require('koa-router')();
 const Person = require('../dbs/models/person');
 
+router.get('/hello', async (ctx, next) => {
+  ctx.response.type='text/html';
+  ctx.response.body='<h1>GOOD MORNING XY!</h1>'
+});
 router.prefix('/api');
 router.get('/hello/:id', async (ctx, next) => {
   let name = ctx.params.id;
