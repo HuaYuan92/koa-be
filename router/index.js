@@ -1,21 +1,10 @@
 const router = require('koa-router')();
 const Person = require('../dbs/models/person');
 
-router.get('/hello', async (ctx, next) => {
+router.get('/', async (ctx, next) => {
   ctx.response.type='text/html';
   ctx.response.body='<h1>GOOD MORNING XY!</h1>'
 });
-router.prefix('/api');
-router.get('/hello/:id', async (ctx, next) => {
-  let name = ctx.params.id;
-  console.log(2);
-  ctx.response.body = `<h1>Hello, ${name}!</h1>`;
-});
-
-router.get('/', async (ctx, next) => {
-  ctx.response.body = '<h1>Home page</h1>';
-});
-
 
 /**
  *  一、 增加 内容 向person数据模型中
